@@ -1,7 +1,7 @@
 import Item from "./(components)/Item";
 export default function Home() {
   return (
-    <div>
+    <div className="bg-slate-700 p-4 lg:grid grid-cols-2 xl:grid-cols-4">
       <Item />
       <Item />
       <Item />

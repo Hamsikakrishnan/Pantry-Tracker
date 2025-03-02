@@ -1,7 +1,9 @@
-export default function Page({params}) {
+import ItemsForm from "@/app/(components)/ItemsForm";
+export default async function Page({params}) {
+    const x = await params;
     return(
         <div>
-            <h1>Page {params.id}</h1>
+           <ItemsForm /> 
         </div>
     )
 }
