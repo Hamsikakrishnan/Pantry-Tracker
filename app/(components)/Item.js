@@ -2,7 +2,7 @@ import Freshness from "./Freshness"
 import Deleteblock from "./Deleteblock"
 export default function Item({pantry}) {
     return(
-        <div className="flex flex-col bg-slate-900 hover:bg-slate-800 text-white m-3 p-3 rounded-sm">
+        <div className="flex flex-col bg-slate-900 hover:bg-slate-700 text-white m-3 p-3 rounded-sm">
             <div className="flex justify-between">
                 <h1 className="text-2xl font-bold">{pantry.title}</h1>
                 <Deleteblock id={pantry._id}/>
