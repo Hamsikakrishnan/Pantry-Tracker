@@ -23,8 +23,12 @@ export default function RootLayout({ children }) {
       <body
         className="bg-slate-900"
       > 
-        <Nav />
-        {children}
+        <div className="flex flex-col h-screen max-h-screen">
+          <Nav />
+          <div className="flex-grow overflow-y-auto bg-slate-800 text-slate-100">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
