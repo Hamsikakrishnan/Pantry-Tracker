@@ -12,3 +12,13 @@ export async function POST(req){
         return NextResponse.json({message: "Error", err}, {status: 500});
     }
 }
+
+export async function GET(){
+    try{
+       const pantry = await Pantry.find()
+       return NextResponse.json({pantry},{status: 200});
+    }
+    catch(err){
+        return NextResponse.json({message: "Error", err}, {status: 500});
+    }
+}
