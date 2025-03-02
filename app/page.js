@@ -1,14 +1,38 @@
 import Item from "./(components)/Item";
-export default function Home() {
+const pantry = async() =>{
+  try{
+      const res = await fetch("http://localhost:3000/api/Pantry",{
+        cache: "no-store",
+      });
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      const data = await res.json();
+      return data;
+  }
+  catch(error){
+    console.log("failed to fetch pantry Items", error);
+  }
+}
+
+
+const Home = async() => {
+  const pantryItems = await pantry();
   return (
-    <div className="bg-slate-700 p-4 lg:grid grid-cols-2 xl:grid-cols-4">
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <h1>This is the Home Page... It is updating... VS Code Layout is different. I feel like something is missing</h1>
-      <div className = "flex-grow"></div>
-      
+    <div>
+      {pantryItems && 
+        <div className="bg-slate-800 p-4 lg:grid grid-cols-2 xl:grid-cols-4">
+            {pantryItems.map((items, _index) => (
+                <Item 
+                    id={_index}
+                    key={_index}
+                    pantry={items}
+                />
+              ))}
+      </div>
+      }
     </div>
   );
 }
+
+export default Home;

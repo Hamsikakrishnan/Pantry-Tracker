@@ -14,11 +14,12 @@ export async function POST(req){
 }
 
 export async function GET(){
-    try{
-       const pantry = await Pantry.find()
-       return NextResponse.json({pantry},{status: 200});
-    }
-    catch(err){
-        return NextResponse.json({message: "Error", err}, {status: 500});
+    try {
+        const pantryItems = await Pantry.find();
+        return NextResponse.json(pantryItems, { status: 200 }); 
+    } 
+    catch (err) {
+        console.error("Error fetching pantry items:", err);
+        return NextResponse.json({ message: "Error fetching pantry items", error: err.message }, { status: 500 });
     }
 }
